@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<script>
+		function updateImage() {
+			document.getElementById('imagePreview').src = document.getElementById('atlasSearch').value;
+		}
+
+		function runSearch() {
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function () {
+				if (this.readyState != 4) return;
+
+				if (this.status == 200) {
+					var data = JSON.parse(this.responseText);
+					var result = document.getElementById('result');
+					result.innerHTML = "";
+					console.log("Success");
+					if (data.length) {
+						for (var i=0; i<data.length; i++) {
+							console.log(data[i].imageURI);
+							let p=document.createElement("p");
+							p.innerText = JSON.stringify(data[i]);
+							result.appendChild(p);
+							let img=document.createElement("img");
+							img.src=data[i].imageURI;
+							result.appendChild(img);
+						}
+					}
+					console.log(data);
+					// we get the returned data
+				}
+			};
+
+			xhr.open('GET', "https://eu-west-1.aws.data.mongodb-api.com/app/multiregion-imagerecognition-lgdcl/endpoint/atlasSearch?secret=myURISecret&atlasSearch=" + document.getElementById('atlasSearch').value, true);
+			xhr.send();
+		}
+	</script>
+<body>
+
+<h2>Submit Image for Processing</h2>
+<form action="javascript:runSearch();">
+	<label for="atlasSearch">Search for images</label><br>
+	<input type="text" id="atlasSearch" oninput="" name="atlasSearch" size="150" value="doge"><br>
+	<button type="button" type="submit" onclick="runSearch()">Search</button>
+</form>
+
+<p id="result"></p>
+
+</body>
+</html>

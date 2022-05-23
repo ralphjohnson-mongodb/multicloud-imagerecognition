@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<script>
+		function updateImage() {
+			document.getElementById('imagePreview').src = document.getElementById('imageURI').value;
+		}
+
+		function sendImage() {
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function () {
+				if (this.readyState != 4) return;
+
+				if (this.status == 200) {
+					var data = JSON.parse(this.responseText);
+					document.getElementById('result').innerHTML = this.responseText;
+					console.log("Success");
+					// we get the returned data
+				}
+			};
+
+			xhr.open('GET', "https://eu-west-1.aws.data.mongodb-api.com/app/multiregion-imagerecognition-lgdcl/endpoint/addImageURI?secret=myURISecret&imageURI=" + document.getElementById('imageURI').value + "&imageDescription=" + document.getElementById('imageDescription').value, true);
+			xhr.send();
+		}
+	</script>
+<body>
+
+<h2>Submit Image for Processing</h2>
+
+<form action="">
+	<label for="imageURI">Image URI:</label><br>
+	<input type="text" id="imageURI" oninput="updateImage()" name="imageURI" size="150" value="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg"><br>
+	<img src="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" id="imagePreview">
+	<br>
+	<label for="imageDescription">Description:</label><br>
+	<textarea id="imageDescription" name="imageDescription" rows="4" cols="50">
+Doge (pronounced /ˈdoʊdʒ/ DOHJ) is a slang term for "dog" that is primarily associated with pictures of Shiba Inus (nicknamed "Shibe") and internal monologue captions on Tumblr.
+	</textarea>
+	<br><br>
+	<button type="button" onclick="sendImage()">Send it!</button>
+</form> 
+
+<p id="result"></p>
+
+</body>
+</html>
