@@ -1,6 +1,7 @@
 {
     "config_version": 20210101,
-    "name": "MultiRegion-ImageRecognition",
+    "app_id": "imageprocessing-ycgdf",
+    "name": "ImageProcessing",
     "location": "IE",
     "deployment_model": "LOCAL"
 }

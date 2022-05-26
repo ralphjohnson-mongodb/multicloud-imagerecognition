@@ -2,7 +2,7 @@
     "name": "mongodb-atlas",
     "type": "mongodb-atlas",
     "config": {
-        "clusterName": "m10",
+        "clusterName": "AnandSandbox",
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<style>
+        h2 {
+          font-size: 40pt;
+          font-weight: 200;
+          text-align:center;
+        }
+        h3 {
+          font-size: 30pt;
+          font-weight: 100;
+          text-align:center;
+        }
+        .content{
+          padding-top:40px;
+        }
+        .btn-group button {
+            background-color: #00ED64; /* Green background */
+            border: 2px solid #00684A; /* Green border */
+            color: white; /* White text */
+            padding: 20px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+            font-size: 14pt;
+        }
+  
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+        
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #00684A;
+        } 
+        .flex-parent {
+            display: flex;
+        }
+
+        .jc-center {
+            justify-content: center;
+        }
+    </style>
+	<script>
+		function runSearch() {
+			// Update this URI to the value from your App Services HTTPS endpoint for the "/search" entry
+            var URI = 'https://eu-west-1.aws.data.mongodb-api.com/app/imageprocessing-ycgdf/endpoint/search'
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function () {
+				if (this.readyState != 4) return;
+
+				if (this.status == 200) {
+					var data = JSON.parse(this.responseText);
+					var result = document.getElementById('result');
+					result.innerHTML = "<h3>Results</h3>";
+					console.log("Success");
+					if (data.length) {
+						for (var i=0; i<data.length; i++) {
+							console.log(data[i].imageURI);
+							let p=document.createElement("p");
+							p.innerText = JSON.stringify(data[i]);
+							result.appendChild(p);
+							let img=document.createElement("img");
+							img.src=data[i].imageURI;
+							result.appendChild(img);
+						}
+					}
+					console.log(data);
+					// we get the returned data
+				}
+			};
+
+			xhr.open('GET', URI + "?atlasSearch=" + document.getElementById('atlasSearch').value, true);
+			xhr.send();
+		}
+	</script>
+
+<body>
+	<div class="content">
+		<h2>Image Search</h2>
+		<div class="flex-parent jc-center">
+		<form action="javascript:runSearch();">
+			<label for="atlasSearch">Search for images:</label><br><br>
+			<input type="text" id="atlasSearch" oninput="" name="atlasSearch" size="150" value="doge"><br>
+			</br>
+			<div class="btn-group">
+				<button type="button" type="submit" onclick="runSearch()">Search</button>
+			</div>
+		</form>
+		</div>
+		<p id="result"></p>
+	</div>
+</body>
+</html>

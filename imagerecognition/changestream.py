@@ -4,17 +4,8 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-from array import array
-import os
-from PIL import Image
-import sys
-import time
-
 import pymongo
-#from bson.json_util import dumps
 from json import dumps
-import time
-import random
 import demo_settings
 
 def main():
@@ -23,7 +14,7 @@ def main():
     db = conn[demo_settings.DATABASE_NAME]
     collection = db[demo_settings.COLLECTION_NAME]
 
-    computervision_client = ComputerVisionClient(demo_settings.endpoint, CognitiveServicesCredentials(demo_settings.subscription_key))
+    computervision_client = ComputerVisionClient(demo_settings.ENDPOINT, CognitiveServicesCredentials(demo_settings.SUBSCRIPTION_KEY))
 
     # Define the change_stream object 
     change_stream = collection.watch([{ "$match" : {"operationType" : "insert" } }],full_document="updateLookup")
@@ -60,5 +51,4 @@ if __name__ == "__main__":
         main()
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s" % e)
-
 
