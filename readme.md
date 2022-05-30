@@ -19,7 +19,7 @@ The demo script will allow your audience to access a web page and provide a URI 
 - Import the sample data set. A small number of doucments have been provided to get you started in the data.json file. Import these in order to create the charts dashboard that will be embedded in the UI.
   - To import, run the following command:
   ```
-  mongoimport --uri "mongodb+srv://<user>:<password>@anandsandbox.hluaz.mongodb.net/imageRecog" --collection imageRecog --file data.json
+  mongoimport --uri "mongodb+srv://<user>:<password>@anandsandbox.hluaz.mongodb.net/imageRecog" --collection images --file data.json
   ```
 - Create a charts dashboard to embed. Navigate to charts and create a new data source pointing to the `imageRecog` collection in the cluster. Ensure that this data source can be accessed without authenication. Then create a new dashboard and add a simple pie chart that displays breakdown of the tags in the collection. Once you're happy with the chart save and return to the dashboard. On the `...` button of the dashboard you will have an option to embed the chart. Choose this and select the `unauthenticated` tab. Ensure that the toggle for `Enable unauthenticated access` is enabled and choose a refresh rate of 10 seconds. Copy and paste the URL defined in the `src` attribute of the iframe and update the `charts.html` file with this value. You should be able to test this by opening that HTML file in a browser (adjust any other properties like the size as required).
   
