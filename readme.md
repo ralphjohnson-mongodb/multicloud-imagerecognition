@@ -45,7 +45,7 @@ The app installation will not upload the basic client HTML files. Unfortunatly t
   - charts.html
 - Remember to deploy your changes and thest that you can get to the URL publised in the hosting page.
 
-The final step in the set up is to execute the change streams code which will trigger the API call to Azure's cognitive services. To do this you will need to set up a subscription for these services on Azure as per the [docs](https://azure.com/docs). When you have set this up make a note of the subscription id. 
+The final step in the set up is to execute the change streams code which will trigger the API call to Azure's cognitive services. To do this you will need to set up a subscription for these services on Azure as per the [docs](https://docs.microsoft.com/en-gb/azure/cognitive-services/computer-vision/quickstarts-sdk/image-analysis-client-library?tabs=visual-studio&pivots=programming-language-python). When you have set this up make a note of the subscription id. 
 
 Then install the necessary libraries in the location where you plan to run the change streams code. (This can be run on your laptop or it can be run on a compute instance in Azure if your talk track is around multi-cloud and leveraging specific cloud services from different providers.)
 
