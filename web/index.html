@@ -1,0 +1,61 @@
+<html>
+    <head>
+      <style>
+        h1 {
+          font-size: 60pt;
+          font-weight: 200;
+          text-align:center;
+        }
+        .content{
+          padding-top:40px;
+        }
+        .btn-group button {
+            background-color: #00ED64; /* Green background */
+            border: 2px solid #00684A; /* Green border */
+            color: white; /* White text */
+            padding: 50px 120px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+            font-size: 20pt;
+        }
+  
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+        
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #00684A;
+        } 
+        .flex-parent {
+            display: flex;
+        }
+
+        .jc-center {
+            justify-content: center;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="content">
+        <h1>Image Recognition</h1>
+        </br>
+        <div class="flex-parent jc-center">
+            <div class="btn-group">
+                <button onclick="location.href = 'addImage.html';">Add Image</button>
+                <button onclick="location.href = 'atlasSearch.html';">Search</button>
+                <button onclick="location.href = 'charts.html';">Charts</button>
+            </div>
+        </div>
+    </div>
+    </body>
+  </html>
+  
+
