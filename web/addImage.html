@@ -43,7 +43,11 @@
         }
     </style>
 	<script>
-		function sendImage() {
+		function updateImage() {
+			document.getElementById('imagePreview').src = document.getElementById('imageURI').value;
+		}
+
+        function sendImage() {
 			// Update this URI to the value from your App Services HTTPS endpoint for the "/addImage" entry
 			var URI = 'https://eu-west-1.aws.data.mongodb-api.com/app/imageprocessing-ycgdf/endpoint/addImage'
 			var xhr = new XMLHttpRequest();
@@ -70,12 +74,12 @@
 			<div class="flex-parent jc-center">
 			<form action="">
 				<label for="imageURI">Image URI:</label><br>
-				<input type="text" id="imageURI" oninput="updateImage()" name="imageURI" size="150" value="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg"><br>
+				<input type="text" id="imageURI" oninput="updateImage()" name="imageURI" size="150" value="https://dogcrunch.com/wp-content/uploads/2019/02/Australian-Kelpie-named-Abbie.jpg"><br>
 				<br>
-				<img src="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" id="imagePreview">
+				<img src="https://dogcrunch.com/wp-content/uploads/2019/02/Australian-Kelpie-named-Abbie.jpg" id="imagePreview" style="width:900px;height:600px;"-->
 				<br>
 				<label for="imageDescription">Description:</label><br>
-				<textarea id="imageDescription" name="imageDescription" rows="4" cols="100">Doge (pronounced /ˈdoʊdʒ/ DOHJ) is a slang term for "dog" that is primarily associated with pictures of Shiba Inus (nicknamed "Shibe") and internal monologue captions on Tumblr.
+				<textarea id="imageDescription" name="imageDescription" rows="4" cols="100">Surfer dog Abbie, the Australian Kelpie who won the World Dog Surfing Championship twice.
 				</textarea>
 				<br><br>
 				<div class="btn-group">

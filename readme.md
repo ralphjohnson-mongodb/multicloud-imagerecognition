@@ -42,7 +42,7 @@ The app installation will not upload the basic client HTML files. Unfortunatly t
   - index.html
   - atlasSearch.html
   - addImage.html
-  - charts.html
+  - ~~charts.html~~ (was too slow to load)
 - Remember to deploy your changes and thest that you can get to the URL publised in the hosting page.
 
 The final step in the set up is to execute the change streams code which will trigger the API call to Azure's cognitive services. To do this you will need to set up a subscription for these services on Azure as per the [docs](https://docs.microsoft.com/en-gb/azure/cognitive-services/computer-vision/quickstarts-sdk/image-analysis-client-library?tabs=visual-studio&pivots=programming-language-python). When you have set this up make a note of the subscription id. 
@@ -81,5 +81,6 @@ Feel free to vary the talk track based on your auidence and the outcomes you're 
 - Then open the search page and perform some random searches. To make these searches more impactful, modify the function execuing the search and comment out/in the logic to run a fuzzy search describing the ease at which you can use this capability to provide a rich user experiece.
 - Finally navigate to charts via Atlas and demonstrate how easy it is to create some visual representations of the data. Show the ability to embed the dashboard and navigate back to the HTML page to demonstrate that embedded dashboard. If time allows add a second chart to the dashboard and show how this is immediately reflected in the embedded page.
 
+**Note - the charts button has been commented out of the index page because the performnce of rendering the embedded chart was really bad. If demoing charts I would simply show how easy it is to create a chart and talk about the ability to embedded it.**
 
 To make the demo interactive, use one of the many QR Code generators to generate and present a QR code that the audience can use to access the HTML pages. They can then find and load images themselves.
