@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from distutils.log import error
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
@@ -41,8 +42,8 @@ def main():
             for tag in tags_result_remote.tags:
                 print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
                 tags.append(tag.name)
-        except:
-            print("An image recognition error occurred")
+        except BaseException as err:
+            print(f"An image recognition error occurred {err=}, {type(err)=}")            
 
         collection.update_one({"_id":change["fullDocument"]["_id"]},{"$set": { "tags": tags }})
 
